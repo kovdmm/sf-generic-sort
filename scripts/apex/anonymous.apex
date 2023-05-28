@@ -30,10 +30,6 @@ public abstract class DirectionalSortCriterion extends FieldSortCriterion {
     public Boolean isAscending { get; protected set; } // true
     public Integer directionMultiplier { get { ... } }
 
-    public FieldSortCriterion(String fieldName) {}
-    public FieldSortCriterion(String fieldName, Boolean isAscending) {}
-    public FieldSortCriterion(String fieldName, Boolean isAscending, Boolean nullsFirst) {}
-
     public virtual Integer compare2(Object arg1, Object arg2) {
         return this.compare3(arg1, arg2) * this.directionMultiplier;
     }
@@ -50,21 +46,21 @@ public virtual class StringDirectionalSortCriterion extends DirectionalSortCrite
 public class DateTimeDirectionalSortCriterion extends StringDirectionalSortCriterion {
 }
 
-public class TimeDirectionalSortCriterion extends StringDirectionalSortCriterion {
+public class DateDirectionalSortCriterion extends StringDirectionalSortCriterion {
 }
 
-public class DateDirectionalSortCriterion extends StringDirectionalSortCriterion {
+public class TimeDirectionalSortCriterion extends StringDirectionalSortCriterion {
 }
 
 public class NumericDirectionalSortCriterion extends DirectionalSortCriterion {
     public override Integer compare3(Object arg1, Object arg2) {
-        return (arg1 == arg2 ? 0 : (Double) arg1 > (Double) arg2 ? 1 : -1);  // [-1, 0, 1]
+        return (arg1 == arg2 ? 0 : (Double) arg1 > (Double) arg2 ? 1 : -1); // [-1, 0, 1]
     }
 }
 
 public class ComparableDirectionalSortCriterion extends DirectionalSortCriterion {
     public override Integer compare3(Object arg1, Object arg2) {
-        return ((Comparable) arg1).compareTo(arg2);  // [-1, 0, 1]
+        return ((Comparable) arg1).compareTo(arg2); // [-1, 0, 1]
     }
 }
 
@@ -74,7 +70,7 @@ public class CustomOrderSortCriterion extends FieldSortCriterion {
     public Integer compare2(Object arg1, Object arg2) {
         Integer index1 = this.customOrder.indexOf(arg1);
         Integer index2 = this.customOrder.indexOf(arg2);
-        return index1 == index2 ? 0 : index1 > index2 : 1 : -1;
+        return index1 == index2 ? 0 : index1 > index2 ? 1 : -1;
     }
 }
 
@@ -145,11 +141,31 @@ List<Person> people = new List<Person> {
 };
 
 people = Collection.sort(people, new List<SortCriterion> {
-    new DirectionalSortCriterion('firstName', false), // DirectionalSortCriterion.SortDirection.DESCENDING
+    new DirectionalSortCriterion('firstName', false), // false <-- DirectionalSortCriterion.SortDirection.DESCENDING
     new DirectionalSortCriterion('lastName'),
     new CustomOrderSortCriterion('gender', new List<Object> { Gender.FEMALE, Gender.MALE }),
     new AggregationSortCriterion('children', true, AggregationSortCriterion.COUNT),
     //new AggregationSortCriterion('children', true, new AverageChildAge()), // Aggregation Predicate
+});
+
+
+
+SortParams <- CustomOrderSortParams
+    ^
+    |
+DirectionalSortParams
+
+
+
+
+people = Collection.sort(people, new List<SortCriterion> {
+    //DirectionalSortCriterion.create(new List<Object> { new SortingField('firstName'), GenericSort.SortDirection.DESCENDING, GenericSort.NullPolicy.NULLS_LAST }),
+    //DirectionalSortCriterion.create(new DirectionalSortParams('firstName', GenericSort.SortDirection.DESCENDING, GenericSort.NullPolicy.NULLS_LAST)),
+    //DirectionalSortCriterion.create(new DirectionalSortParams('firstName', new List<Object> { GenericSort.SortDirection.DESCENDING, GenericSort.NullPolicy.NULLS_LAST })),
+    DirectionalSortCriterion.create(new DirectionalSortParams('firstName', false, false)),
+    DirectionalSortCriterion.create(new DirectionalSortParams('lastName')),
+    CustomOrderSortCriterion.create(new CustomOrderSortParams('gender', new List<Object> { Gender.MALE, Gender.FEMALE }), false),
+    //AggregationSortCriterion.create(new AggregationSortParams('children', new AverageChildAge(), true), // Aggregation Predicate
 });
 
 //SELECT Id, FirstName, LastName, Email, Phone FROM User ORDER BY FirstName DESC, LastName ASC

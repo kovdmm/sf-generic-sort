@@ -1,0 +1,2 @@
+public class DateTimeDirectionalSortCriterion extends StringDirectionalSortCriterion {
+}
