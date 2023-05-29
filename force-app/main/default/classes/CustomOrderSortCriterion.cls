@@ -1,9 +1,12 @@
 public class CustomOrderSortCriterion extends FieldSortCriterion {
-    public List<Object> customOrder { get; private set; }
+    public String fieldName { get; set; }
+    public List<Object> customOrder { get; set; }
+    public Boolean nullsFirst { get; set; }
 
-    public CustomOrderSortCriterion withCustomOrder(List<Object> customOrder) {
+    public CustomOrderSortCriterion(String fieldName, List<Object> customOrder, Boolean nullsFirst) {
+        this.fieldName = fieldName;
         this.customOrder = customOrder;
-        return this;
+        this.nullsFirst = nullsFirst;
     }
 
     public override Integer compare2(Object arg1, Object arg2) {

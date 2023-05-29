@@ -1,7 +1,7 @@
 public abstract class DirectionalSortCriterion extends FieldSortCriterion {
-    public String fieldName { get; protected set; }
-    public Boolean isAscending { get; protected set; }
-    public Boolean nullsFirst { get; protected set; }
+    public String fieldName { get; set; }
+    public Boolean isAscending { get; set; }
+    public Boolean nullsFirst { get; set; }
 
     public DirectionalSortCriterion(String fieldName, Boolean isAscending, Boolean nullsFirst) {
         this.fieldName = fieldName;
