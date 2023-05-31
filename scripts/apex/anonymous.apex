@@ -158,14 +158,21 @@ DirectionalSortParams
 
 
 
-people = Collection.sort(people, new List<SortCriterion> {
+/*people = Collection.sort(people, new List<SortCriterion> {
     //DirectionalSortCriterion.create(new List<Object> { new SortingField('firstName'), GenericSort.SortDirection.DESCENDING, GenericSort.NullPolicy.NULLS_LAST }),
     //DirectionalSortCriterion.create(new DirectionalSortParams('firstName', GenericSort.SortDirection.DESCENDING, GenericSort.NullPolicy.NULLS_LAST)),
     //DirectionalSortCriterion.create(new DirectionalSortParams('firstName', new List<Object> { GenericSort.SortDirection.DESCENDING, GenericSort.NullPolicy.NULLS_LAST })),
     DirectionalSortCriterion.create(new DirectionalSortParams('firstName', false, false)),
+    DirectionalSortCriterion.create(new StringDirectionalSortCriterion('firstName', false, false)),
     DirectionalSortCriterion.create(new DirectionalSortParams('lastName')),
     CustomOrderSortCriterion.create(new CustomOrderSortParams('gender', new List<Object> { Gender.MALE, Gender.FEMALE }), false),
     //AggregationSortCriterion.create(new AggregationSortParams('children', new AverageChildAge(), true), // Aggregation Predicate
+});*/
+
+people = Collection.sort(people, new List<SortCriterion> {
+        DirectionalSortCriterion.create(new DirectionalSortParams('firstName', false, false)),
+        DirectionalSortCriterion.create(new StringDirectionalSortCriterion('firstName', false, false)),
+        CustomOrderSortCriterion.create(new CustomOrderSortParams('gender', new List<Object> { Gender.MALE, Gender.FEMALE }), false),
 });
 
 //SELECT Id, FirstName, LastName, Email, Phone FROM User ORDER BY FirstName DESC, LastName ASC
