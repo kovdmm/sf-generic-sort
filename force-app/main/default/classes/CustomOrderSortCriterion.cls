@@ -1,7 +1,6 @@
 public class CustomOrderSortCriterion extends SortCriterion {
     public String fieldName { get; set; }
     public List<Object> customOrder { get; set; }
-    public Boolean nullsFirst { get; set; }
 
     public CustomOrderSortCriterion(String fieldName, List<Object> customOrder, Boolean nullsFirst) {
         this.fieldName = fieldName;
