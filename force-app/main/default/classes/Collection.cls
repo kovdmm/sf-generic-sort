@@ -16,7 +16,7 @@ public with sharing class Collection {
         // если элементов > 1 и тип первого примитивный, вернуть отсортированный
 
         // objects оборачивается в items
-        List<Item> items;
+        List<Item> items = new List<Item>();
         for (Object obj : objects) {
             items.add(new Item((Map<String, Object>) JSON.deserializeUntyped(JSON.serialize(obj))));
         }
@@ -31,5 +31,4 @@ public with sharing class Collection {
         return sortedList;
     }
 
-    
 }
