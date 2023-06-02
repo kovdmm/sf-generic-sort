@@ -1,6 +1,6 @@
 global class Item implements Comparable {
     public Object sourceObject { get; set; }
-    public List<SortCriterion> criteria  { get; set; }
+    public List<SortCriterion> criteria { get; set; }
 
     public Map<String, Object> fieldValueMap {
         get {
@@ -19,9 +19,14 @@ global class Item implements Comparable {
     global Integer compareTo(Object compareTo) {
         Item compareToEmp = (Item) compareTo;
         // Циклом по всем полям
-        if (this.fieldValueMap.get('age') == compareToEmp.fieldValueMap.get('age')) return 0;
-        if (this.fieldValueMap.get('age') > compareToEmp.fieldValueMap.get('age')) return 1;
-        return -1;
+        for (SortCriterion sc : criteria) {
+            if (this.fieldValueMap.get(sc.fieldName) > compareToEmp.fieldValueMap.get(sc.fieldName)) return 1;
+            if (this.fieldValueMap.get(sc.fieldName) < compareToEmp.fieldValueMap.get(sc.fieldName)) return -1;
+            if (this.fieldValueMap.get(sc.fieldName) == compareToEmp.fieldValueMap.get(sc.fieldName)) {
+                continue;
+            }
+            return 0;
+        }
     }
 
     public Object getValue(String fieldName) {
