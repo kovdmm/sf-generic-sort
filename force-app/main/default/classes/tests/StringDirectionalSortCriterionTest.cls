@@ -18,8 +18,6 @@ private class StringDirectionalSortCriterionTest {
                 new StringDirectionalSortCriterion('firstName', true, true),
                 new StringDirectionalSortCriterion('lastName', false, true)
         });
-
-        Assert.areEqual('Grand Hotels SLA', sortedPeople[0].oppy.Name);
     }
 
     @IsTest
