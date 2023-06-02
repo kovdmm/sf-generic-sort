@@ -7,7 +7,7 @@
  */
 public with sharing class Collection {
     public static List<Object> sort(List<Object> objects, SortableCriterion criterion) {
-        return sort(objects, new List<SortableCriterion> { criterion });
+        return sort(objects, new List<SortableCriterion>{criterion});
     }
 
     public static List<Object> sort(List<Object> objects, List<SortableCriterion> criteria) {
@@ -28,7 +28,7 @@ public with sharing class Collection {
         // разворачивается из items и возвращается
         List<Object> sortedList = new List<Object>();
         for (Item item : items) {
-            sortedList.add((Object) (JSON.deserialize(JSON.serialize(item), Object.class)));
+            sortedList.add(JSON.deserializeUntyped(JSON.serialize(item)));
         }
         return sortedList;
     }
