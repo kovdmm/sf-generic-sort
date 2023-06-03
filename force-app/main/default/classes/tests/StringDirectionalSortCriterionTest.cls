@@ -4,8 +4,8 @@ private class StringDirectionalSortCriterionTest {
     public static void testScenario1() {
         List<Person> people = getPeople();
         Scenario scenario = getScenario1();
-        List<Person> sortedPeople = (List<Person>) Collection.sort(shuffle(people), scenario.criteria);
-        scenario.assertEqualsWithExpected(sortedPeople);
+        Collection.sort(shuffle(people), scenario.criteria);
+        scenario.assertEqualsWithExpected(people);
     }
 
     private static Scenario getScenario1() {
@@ -51,10 +51,6 @@ private class StringDirectionalSortCriterionTest {
 
     private static Scenario getScenario2() {
         return new Scenario(
-                //gender (сначала мужчины)
-                //firstName (убывание)
-                //lastName (возрастание)
-                //аge (возрастание)
                 new List<SortCriterion>{
                         new EnumCustomOrderSortCriterion('gender', new List<Object>{ Gender.MALE, Gender.FEMALE}, true),
                         new StringDirectionalSortCriterion('firstName', false, false),
