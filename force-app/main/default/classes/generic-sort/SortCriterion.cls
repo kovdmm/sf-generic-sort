@@ -2,7 +2,7 @@ public abstract class SortCriterion implements SortableCriterion {
     public String fieldName { get; set; }
     public Boolean nullsFirst { get; protected set; }
 
-    public SortCriterion (String fieldName, Boolean nullsFirst) {
+    public SortCriterion(String fieldName, Boolean nullsFirst) {
         this.fieldName = fieldName;
         this.nullsFirst = nullsFirst;
     }

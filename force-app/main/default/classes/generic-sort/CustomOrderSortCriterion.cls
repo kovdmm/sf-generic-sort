@@ -11,6 +11,4 @@ public virtual class CustomOrderSortCriterion extends SortCriterion {
         Integer index2 = this.customOrder.indexOf(String.valueOf(arg2));
         return index1 == index2 ? 0 : index1 > index2 ? 1 : -1;
     }
-
-
 }

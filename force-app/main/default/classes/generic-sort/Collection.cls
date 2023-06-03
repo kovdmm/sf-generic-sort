@@ -7,7 +7,7 @@
  */
 public with sharing class Collection {
     public static Object sort(List<Object> objects, SortCriterion criterion) {
-        return sort(objects, new List<SortCriterion>{criterion});
+        return sort(objects, new List<SortCriterion>{ criterion });
     }
 
     public static Object sort(List<Object> objects, List<SortCriterion> criteria) {
