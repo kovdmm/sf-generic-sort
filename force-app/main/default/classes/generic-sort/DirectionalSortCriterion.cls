@@ -1,16 +1,13 @@
 public abstract class DirectionalSortCriterion extends SortCriterion {
     public Boolean isAscending { get; set; }
-    public String fieldName { get; set; }
 
     public DirectionalSortCriterion(String fieldName, Boolean isAscending, Boolean nullsFirst) {
-        this.fieldName = fieldName;
+        super(fieldName, nullsFirst);
         this.isAscending = isAscending;
-        this.nullsFirst = nullsFirst;
     }
 
     public override Integer compare2(Object arg1, Object arg2) {
         return this.compare3(arg1, arg2) * (this.isAscending ? 1 : -1);
-
     }
 
     public abstract Integer compare3(Object arg1, Object arg2);

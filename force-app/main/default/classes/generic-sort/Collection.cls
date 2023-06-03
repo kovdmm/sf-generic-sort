@@ -6,31 +6,32 @@
  *
  */
 public with sharing class Collection {
-    public static List<Object> sort(List<Object> objects, SortableCriterion criterion) {
-        return sort(objects, new List<SortableCriterion>{criterion});
+    public static Object sort(List<Object> objects, SortCriterion criterion) {
+        return sort(objects, new List<SortCriterion>{criterion});
     }
 
-    public static List<Object> sort(List<Object> objects, List<SortableCriterion> criteria) {
+    public static Object sort(List<Object> objects, List<SortCriterion> criteria) {
+        objects = objects.clone();
         // если пустой или 1 элемент, вернуть клон листа
-        if (objects.size() < 2) return objects.clone();
+        if (objects.size() < 2) {
+            return objects;
+        }
 
         // если элементов > 1 и тип первого примитивный, вернуть отсортированный
 
         // objects оборачивается в items
         List<Item> items = new List<Item>();
         for (Object obj : objects) {
-            items.add(new Item(obj));
+            items.add(new Item(obj, criteria));
         }
 
         // сортируется
         items.sort();
 
         // разворачивается из items и возвращается
-        List<Object> sortedList = new List<Object>();
-        for (Item item : items) {
-            sortedList.add(JSON.deserializeUntyped(JSON.serialize(item)));
+        for (Integer i = 0; i < objects.size(); i++) {
+            objects[i] = items[i].sourceObject;
         }
-        return sortedList;
+        return objects;
     }
-
 }
