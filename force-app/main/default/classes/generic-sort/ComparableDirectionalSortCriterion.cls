@@ -1,5 +1,4 @@
 public class ComparableDirectionalSortCriterion extends DirectionalSortCriterion {
-
     public ComparableDirectionalSortCriterion(String fieldName, Boolean isAscending, Boolean nullsFirst) {
         super(fieldName, isAscending, nullsFirst);
     }

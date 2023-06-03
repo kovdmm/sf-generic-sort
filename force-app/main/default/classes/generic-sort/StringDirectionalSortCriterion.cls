@@ -1,5 +1,4 @@
 public virtual class StringDirectionalSortCriterion extends DirectionalSortCriterion {
-
     public StringDirectionalSortCriterion(String fieldName, Boolean isAscending, Boolean nullsFirst) {
         super(fieldName, isAscending, nullsFirst);
     }
