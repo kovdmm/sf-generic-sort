@@ -21,7 +21,7 @@ global class Item implements Comparable {
         Item compareToEmp = (Item) compareTo;
         // Циклом по всем полям
         for (SortCriterion sc : this.criteria) {
-            Integer comparisonResult = sc.compare(this.fieldValueMap.get(sc.fieldName), compareToEmp.fieldValueMap.get(sc.fieldName));
+            Integer comparisonResult = sc.compare(getValue(sc.fieldName), compareToEmp.getValue(sc.fieldName));
             if (comparisonResult == 0) {
                 continue;
             }
@@ -30,7 +30,7 @@ global class Item implements Comparable {
         return 0;
     }
 
-    public Object getValue(String fieldName) {
+    private Object getValue(String fieldName) {
         return this.fieldValueMap.get(fieldName);
     }
 }
