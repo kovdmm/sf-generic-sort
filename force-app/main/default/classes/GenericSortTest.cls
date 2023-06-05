@@ -1,5 +1,5 @@
 @IsTest
-private class StringDirectionalSortCriterionTest {
+private class GenericSortTest {
     @IsTest
     public static void testScenario1() {
         List<Person> people = getPeople();
