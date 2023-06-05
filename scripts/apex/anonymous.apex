@@ -252,3 +252,56 @@ System.debug(Item.class.isAssignableFrom(t));
 DateTime dt = DateTime.now();
 System.debug(dt);
 System.debug(String.valueOf(dt));
+
+// Comparable concept
+private class Parent {
+    public String name { get; private set; }
+    public Child child { get; private set; }
+
+    public Parent(String name, Child child) {
+        this.name = name;
+        this.child = child;
+    }
+}
+
+private class Child implements Comparable {
+    public String name { get; private set; }
+
+    public Child(String name) {
+        this.name = name;
+    }
+
+    public Integer compareTo(Object compareTo) {
+        Child otherChild = (Child) compareTo;
+        // nulls first implementation
+        if (this.name == null || otherChild.name == null) {
+            return this.name == otherChild.name ? 0 : (otherChild.name == null ? 1 : -1);
+        }
+        // name comparison
+        return this.name.compareTo(otherChild.name);
+    }
+}
+
+List<Parent> parents = new List<Parent>{
+    new Parent('Alex', new Child('Antony')),
+    new Parent('Alex', new Child('Zoe')),
+    new Parent('Alex', new Child(null)),
+    new Parent('Alex', null),
+    new Parent('Zed', new Child('Antony')),
+    new Parent('Zed', new Child('Zoe')),
+    new Parent('Zed', new Child(null)),
+    new Parent('Zed', null),
+    new Parent(null, new Child(null)),
+    new Parent(null, new Child('Zoe')),
+    new Parent(null, new Child('Antony')),
+    new Parent(null, null)
+};
+
+Collection.sort(parents, new List<SortCriterion> {
+    new StringDirectionalSortCriterion('name', true, true),
+    new ComparableDirectionalSortCriterion('child', true, true, Child.class)
+});
+
+System.debug(JSON.serializePretty(parents));
+
+// TODO: put in order this file
