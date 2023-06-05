@@ -1,14 +1,14 @@
-public class CustomOrderSortCriterion extends FieldSortCriterion {
-    public List<Object> customOrder { get; private set; }
+public virtual class CustomOrderSortCriterion extends SortCriterion {
+    public List<Object> customOrder { get; set; }
 
-    public CustomOrderSortCriterion withCustomOrder(List<Object> customOrder) {
+    public CustomOrderSortCriterion(String fieldName, List<Object> customOrder, Boolean nullsFirst) {
+        super(fieldName, nullsFirst);
         this.customOrder = customOrder;
-        return this;
     }
 
     public override Integer compare2(Object arg1, Object arg2) {
-        Integer index1 = this.customOrder.indexOf(arg1);
-        Integer index2 = this.customOrder.indexOf(arg2);
+        Integer index1 = this.customOrder.indexOf(String.valueOf(arg1));
+        Integer index2 = this.customOrder.indexOf(String.valueOf(arg2));
         return index1 == index2 ? 0 : index1 > index2 ? 1 : -1;
     }
 }
