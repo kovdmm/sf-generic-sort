@@ -2,9 +2,18 @@
 # More information: https://prettier.io/docs/en/ignore.html
 #
 
+# Salesforce
 **/staticresources/**
 .localdevserver
 .sfdx
-.vscode
+.sf
 
+# Dependencies
+node_modules/
+
+# IDE
+.idea
+IlluminatedCloud/
+
+# cache
 coverage/
