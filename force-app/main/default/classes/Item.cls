@@ -1,8 +1,8 @@
 public class Item implements Comparable {
-    public Object sourceObject { get; set; }
-    public List<SortCriterion> criteria { get; set; }
+    public Object sourceObject { get; private set; }
+    public List<SortCriterion> criteria { get; private set; }
 
-    public Map<String, Object> fieldValueMap {
+    private Map<String, Object> fieldValueMap {
         get {
             if (this.fieldValueMap == null) {
                 this.fieldValueMap = (Map<String, Object>) JSON.deserializeUntyped(JSON.serialize(sourceObject, true));
