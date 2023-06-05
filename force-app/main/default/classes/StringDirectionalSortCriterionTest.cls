@@ -10,34 +10,34 @@ private class StringDirectionalSortCriterionTest {
 
     private static Scenario getScenario1() {
         return new Scenario(
-                new List<SortCriterion>{
-                        new NumericDirectionalSortCriterion('age', true, false),
-                        new EnumCustomOrderSortCriterion('gender', new List<Object>{ Gender.FEMALE, Gender.MALE}, true),
-                        new StringDirectionalSortCriterion('firstName', true, false),
-                        new StringDirectionalSortCriterion('lastName', false, true)
-                },
-                new List<Person>{
-                        new Person('Alex', 'Adams', 20, null),
-                        new Person('Alex', null, 20, Gender.FEMALE),
-                        new Person('Alex', 'Zimmerman', 20, Gender.FEMALE),
-                        new Person('Alex', 'Adams', 20, Gender.FEMALE),
-                        new Person('Charlie', 'Zimmerman', 20, Gender.FEMALE),
-                        new Person('Charlie', 'Adams', 20, Gender.FEMALE),
-                        new Person(null, 'Adams', 20, Gender.FEMALE),
-                        new Person('Alex', 'Zimmerman', 20, Gender.MALE),
-                        new Person('Alex', 'Adams', 20, Gender.MALE),
-                        new Person('Charlie', 'Zimmerman', 20, Gender.MALE),
-                        new Person('Charlie', 'Adams', 20, Gender.MALE),
-                        new Person('Alex', 'Zimmerman', 21, Gender.FEMALE),
-                        new Person('Alex', 'Adams', 21, Gender.FEMALE),
-                        new Person('Charlie', 'Zimmerman', 21, Gender.FEMALE),
-                        new Person('Charlie', 'Adams', 21, Gender.FEMALE),
-                        new Person('Alex', 'Zimmerman', 21, Gender.MALE),
-                        new Person('Alex', 'Adams', 21, Gender.MALE),
-                        new Person('Charlie', 'Zimmerman', 21, Gender.MALE),
-                        new Person('Charlie', 'Adams', 21, Gender.MALE),
-                        new Person('Alex', 'Adams', null, Gender.FEMALE)
-                }
+            new List<SortCriterion>{
+                new NumericDirectionalSortCriterion('age', true, false),
+                new EnumCustomOrderSortCriterion('gender', new List<Object>{ Gender.FEMALE, Gender.MALE }, true),
+                new StringDirectionalSortCriterion('firstName', true, false),
+                new StringDirectionalSortCriterion('lastName', false, true)
+            },
+            new List<Person>{
+                new Person('Alex', 'Adams', 20, null),
+                new Person('Alex', null, 20, Gender.FEMALE),
+                new Person('Alex', 'Zimmerman', 20, Gender.FEMALE),
+                new Person('Alex', 'Adams', 20, Gender.FEMALE),
+                new Person('Charlie', 'Zimmerman', 20, Gender.FEMALE),
+                new Person('Charlie', 'Adams', 20, Gender.FEMALE),
+                new Person(null, 'Adams', 20, Gender.FEMALE),
+                new Person('Alex', 'Zimmerman', 20, Gender.MALE),
+                new Person('Alex', 'Adams', 20, Gender.MALE),
+                new Person('Charlie', 'Zimmerman', 20, Gender.MALE),
+                new Person('Charlie', 'Adams', 20, Gender.MALE),
+                new Person('Alex', 'Zimmerman', 21, Gender.FEMALE),
+                new Person('Alex', 'Adams', 21, Gender.FEMALE),
+                new Person('Charlie', 'Zimmerman', 21, Gender.FEMALE),
+                new Person('Charlie', 'Adams', 21, Gender.FEMALE),
+                new Person('Alex', 'Zimmerman', 21, Gender.MALE),
+                new Person('Alex', 'Adams', 21, Gender.MALE),
+                new Person('Charlie', 'Zimmerman', 21, Gender.MALE),
+                new Person('Charlie', 'Adams', 21, Gender.MALE),
+                new Person('Alex', 'Adams', null, Gender.FEMALE)
+            }
         );
     }
 
@@ -51,59 +51,59 @@ private class StringDirectionalSortCriterionTest {
 
     private static Scenario getScenario2() {
         return new Scenario(
-                new List<SortCriterion>{
-                        new EnumCustomOrderSortCriterion('gender', new List<Object>{ Gender.MALE, Gender.FEMALE}, true),
-                        new StringDirectionalSortCriterion('firstName', false, false),
-                        new StringDirectionalSortCriterion('lastName', true, true),
-                        new NumericDirectionalSortCriterion('age', true, false)
-                },
-                new List<Person>{
-                        new Person('Alex', 'Adams', 20, null),
-                        new Person('Charlie', 'Adams', 20, Gender.MALE),
-                        new Person('Charlie', 'Adams', 21, Gender.MALE),
-                        new Person('Charlie', 'Zimmerman', 20, Gender.MALE),
-                        new Person('Charlie', 'Zimmerman', 21, Gender.MALE),
-                        new Person('Alex', 'Adams', 20, Gender.MALE),
-                        new Person('Alex', 'Adams', 21, Gender.MALE),
-                        new Person('Alex', 'Zimmerman', 20, Gender.MALE),
-                        new Person('Alex', 'Zimmerman', 21, Gender.MALE),
-                        new Person('Charlie', 'Adams', 20, Gender.FEMALE),
-                        new Person('Charlie', 'Adams', 21, Gender.FEMALE),
-                        new Person('Charlie', 'Zimmerman', 20, Gender.FEMALE),
-                        new Person('Charlie', 'Zimmerman', 21, Gender.FEMALE),
-                        new Person('Alex', null, 20, Gender.FEMALE),
-                        new Person('Alex', 'Adams', 20, Gender.FEMALE),
-                        new Person('Alex', 'Adams', 21, Gender.FEMALE),
-                        new Person('Alex', 'Adams', null, Gender.FEMALE),
-                        new Person('Alex', 'Zimmerman', 20, Gender.FEMALE),
-                        new Person('Alex', 'Zimmerman', 21, Gender.FEMALE),
-                        new Person(null, 'Adams', 20, Gender.FEMALE)
-                }
+            new List<SortCriterion>{
+                new EnumCustomOrderSortCriterion('gender', new List<Object>{ Gender.MALE, Gender.FEMALE }, true),
+                new StringDirectionalSortCriterion('firstName', false, false),
+                new StringDirectionalSortCriterion('lastName', true, true),
+                new NumericDirectionalSortCriterion('age', true, false)
+            },
+            new List<Person>{
+                new Person('Alex', 'Adams', 20, null),
+                new Person('Charlie', 'Adams', 20, Gender.MALE),
+                new Person('Charlie', 'Adams', 21, Gender.MALE),
+                new Person('Charlie', 'Zimmerman', 20, Gender.MALE),
+                new Person('Charlie', 'Zimmerman', 21, Gender.MALE),
+                new Person('Alex', 'Adams', 20, Gender.MALE),
+                new Person('Alex', 'Adams', 21, Gender.MALE),
+                new Person('Alex', 'Zimmerman', 20, Gender.MALE),
+                new Person('Alex', 'Zimmerman', 21, Gender.MALE),
+                new Person('Charlie', 'Adams', 20, Gender.FEMALE),
+                new Person('Charlie', 'Adams', 21, Gender.FEMALE),
+                new Person('Charlie', 'Zimmerman', 20, Gender.FEMALE),
+                new Person('Charlie', 'Zimmerman', 21, Gender.FEMALE),
+                new Person('Alex', null, 20, Gender.FEMALE),
+                new Person('Alex', 'Adams', 20, Gender.FEMALE),
+                new Person('Alex', 'Adams', 21, Gender.FEMALE),
+                new Person('Alex', 'Adams', null, Gender.FEMALE),
+                new Person('Alex', 'Zimmerman', 20, Gender.FEMALE),
+                new Person('Alex', 'Zimmerman', 21, Gender.FEMALE),
+                new Person(null, 'Adams', 20, Gender.FEMALE)
+            }
         );
     }
 
     private static List<Person> getPeople() {
         return new List<Person>{
-                new Person(null, 'Adams', 20, Gender.FEMALE),
-                new Person('Alex', null, 20, Gender.FEMALE),
-                new Person('Alex', 'Adams', null, Gender.FEMALE),
-                new Person('Alex', 'Adams', 20, null),
-                new Person('Alex', 'Adams', 20, Gender.FEMALE),
-                new Person('Alex', 'Zimmerman', 21, Gender.FEMALE),
-                new Person('Alex', 'Zimmerman', 21, Gender.MALE),
-                new Person('Charlie', 'Adams', 21, Gender.FEMALE),
-                new Person('Alex', 'Adams', 20, Gender.MALE),
-                new Person('Charlie', 'Adams', 20, Gender.FEMALE),
-                new Person('Charlie', 'Zimmerman', 20, Gender.FEMALE),
-                new Person('Charlie', 'Zimmerman', 20, Gender.MALE),
-                new Person('Alex', 'Adams', 21, Gender.FEMALE),
-                new Person('Alex', 'Adams', 21, Gender.MALE),
-                new Person('Charlie', 'Adams', 21, Gender.MALE),
-                new Person('Charlie', 'Adams', 20, Gender.MALE),
-                new Person('Alex', 'Zimmerman', 20, Gender.FEMALE),
-                new Person('Alex', 'Zimmerman', 20, Gender.MALE),
-                new Person('Charlie', 'Zimmerman', 21, Gender.FEMALE),
-                new Person('Charlie', 'Zimmerman', 21, Gender.MALE)
+            new Person(null, 'Adams', 20, Gender.FEMALE),
+            new Person('Alex', null, 20, Gender.FEMALE),
+            new Person('Alex', 'Adams', null, Gender.FEMALE),
+            new Person('Alex', 'Adams', 20, null),
+            new Person('Alex', 'Adams', 20, Gender.FEMALE),
+            new Person('Alex', 'Zimmerman', 21, Gender.FEMALE),
+            new Person('Alex', 'Zimmerman', 21, Gender.MALE),
+            new Person('Charlie', 'Adams', 21, Gender.FEMALE),
+            new Person('Alex', 'Adams', 20, Gender.MALE),
+            new Person('Charlie', 'Adams', 20, Gender.FEMALE),
+            new Person('Charlie', 'Zimmerman', 20, Gender.FEMALE),
+            new Person('Charlie', 'Zimmerman', 20, Gender.MALE),
+            new Person('Alex', 'Adams', 21, Gender.FEMALE),
+            new Person('Alex', 'Adams', 21, Gender.MALE),
+            new Person('Charlie', 'Adams', 21, Gender.MALE),
+            new Person('Charlie', 'Adams', 20, Gender.MALE),
+            new Person('Alex', 'Zimmerman', 20, Gender.FEMALE),
+            new Person('Alex', 'Zimmerman', 20, Gender.MALE),
+            new Person('Charlie', 'Zimmerman', 21, Gender.FEMALE),
+            new Person('Charlie', 'Zimmerman', 21, Gender.MALE)
         };
     }
 
@@ -147,5 +147,4 @@ private class StringDirectionalSortCriterionTest {
         MALE,
         FEMALE
     }
-
 }
