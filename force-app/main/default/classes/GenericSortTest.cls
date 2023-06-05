@@ -139,7 +139,7 @@ private class GenericSortTest {
         }
 
         public Integer compareTo(Object unused) {
-            return (Integer) Math.floor(Math.random() * 3 - 1);
+            return (Integer) Math.floor(Math.random() * 3 - 1); // shuffle
         }
     }
 
